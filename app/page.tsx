@@ -145,7 +145,7 @@ export default function Home() {
         <header className="mb-10 flex items-start justify-between gap-6">
           <div>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
-              TezSaniye
+              Media Platform
             </h1>
             <p className="text-zinc-600 mt-3 text-base md:text-lg dark:text-zinc-400">
               {language === "az"

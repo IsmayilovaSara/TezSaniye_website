@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TezSaniye",
+  title: "Media Platform",
   description: "AI-powered technology news",
 };
 
