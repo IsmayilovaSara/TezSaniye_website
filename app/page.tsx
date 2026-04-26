@@ -86,6 +86,7 @@ export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [language, setLanguage] = useState<"en" | "az">("en");
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -139,6 +140,18 @@ export default function Home() {
     );
   }
 
+  const filteredArticles = articles.filter((article) => {
+  const text = `
+    ${article.title_en || ""}
+    ${article.title_az || ""}
+    ${article.body_en || ""}
+    ${article.body_az || ""}
+    ${article.topic || ""}
+  `.toLowerCase();
+
+  return text.includes(searchTerm.toLowerCase().trim());
+});
+
   return (
     <main className="min-h-screen bg-zinc-50 text-zinc-950 transition-colors dark:bg-[#0a0a0a] dark:text-white">
       <div className="max-w-7xl mx-auto px-6 py-10 md:px-8">
@@ -149,8 +162,8 @@ export default function Home() {
             </h1>
             <p className="text-zinc-600 mt-3 text-base md:text-lg dark:text-zinc-400">
               {language === "az"
-                ? "Süni intellekt əsaslı texnologiya xəbərləri"
-                : "AI-powered technology news"}
+                ? "Süni intellekt əsaslı texnologiya kontenti"
+                : "AI-powered technology content"}
             </p>
           </div>
 
@@ -197,13 +210,22 @@ export default function Home() {
           </div>
         </header>
 
-        {articles.length === 0 ? (
+        <div className="mb-8">
+  <input
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    placeholder={language === "az" ? "Məqalə axtar..." : "Search articles..."}
+    className="w-full rounded-2xl border border-zinc-300 bg-white px-5 py-4 text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-zinc-950 dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:focus:border-white"
+  />
+</div>
+
+        {filteredArticles.length === 0 ? (
           <p className="text-zinc-500 dark:text-zinc-400">
             {language === "az" ? "Məqalə tapılmadı." : "No articles found."}
           </p>
         ) : (
           <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-            {articles.map((article, index) => {
+            {filteredArticles.map((article, index) => {
               const title =
                 language === "az"
                   ? article.title_az || article.title_en
@@ -225,7 +247,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
                     <div className="absolute bottom-4 left-4 text-xs uppercase tracking-[0.2em] text-white/75">
-                      {language === "az" ? "Sİ Xəbərlər" : "AI News"}
+                      {language === "az" ? "Sİ Kontent" : "AI content"}
                     </div>
                   </div>
 

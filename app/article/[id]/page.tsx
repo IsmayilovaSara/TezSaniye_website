@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import ArticleActions from "@/app/components/ArticleActions";
 import ThemeToggle from "@/app/components/ThemeToggle";
+import ArticleComments from "@/app/components/ArticleComments";
 
 type Article = {
   title_en?: string;
@@ -262,8 +263,11 @@ export default function ArticlePage() {
               </div>
             </details>
           </section>
+          
         )}
       </div>
+
+      <ArticleComments articleId={id} language={language} />
     </main>
   );
 }

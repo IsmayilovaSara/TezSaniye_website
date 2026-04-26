@@ -105,7 +105,7 @@ function ArticleCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
         <div className="absolute bottom-4 left-4 text-xs uppercase tracking-[0.2em] text-white/75">
-          {language === "az" ? "Sİ Xəbərlər" : "AI News"}
+          {language === "az" ? "Sİ Məzmun" : "AI Content"}
         </div>
       </div>
 

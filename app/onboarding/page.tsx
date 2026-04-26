@@ -67,23 +67,7 @@ const steps = [
       },
     ],
   },
-  {
-    key: "notification_enabled",
-    title: {
-      en: "Do you want to receive daily news updates?",
-      az: "Gündəlik xəbər bildirişləri almaq istəyirsiniz?",
-    },
-    options: [
-      {
-        label: { en: "Yes, notify me", az: "Bəli, bildiriş göndər" },
-        value: true,
-      },
-      {
-        label: { en: "Not now", az: "İndi yox" },
-        value: false,
-      },
-    ],
-  },
+ 
 ];
 
 export default function OnboardingPage() {

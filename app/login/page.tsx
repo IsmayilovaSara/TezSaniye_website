@@ -29,10 +29,10 @@ export default function LoginPage() {
         {/* Logo / Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white">
-            TezSaniye
+            Media Platform
           </h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2">
-            AI-powered technology news
+            AI-powered technology content
           </p>
         </div>
 
